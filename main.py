@@ -50,3 +50,11 @@ def edit_todo(id:int ,updated_todo : dict):
             item["priority"] = updated_todo["priority"]
             item["completed"] = updated_todo["completed"]
     return updated_todo
+
+@app.delete('/todos/{todo_id}')
+def delete_todo(todo_id: int):
+    for index, todo in enumerate(allTodo):
+        if todo['id'] == todo_id:
+            deleted_todo = allTodo.pop(index)
+            return deleted_todo
+    return "Error, not found"
