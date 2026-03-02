@@ -41,3 +41,12 @@ def add_todo(todo : dict):
     }
     allTodo.append(new_todo)
     return todo
+
+@app.put("/todos/{id}")
+def edit_todo(id:int ,updated_todo : dict):
+    for item in allTodo:
+        if item["id"] == id:
+            item["task"]= updated_todo["task"]
+            item["priority"] = updated_todo["priority"]
+            item["completed"] = updated_todo["completed"]
+    return updated_todo
